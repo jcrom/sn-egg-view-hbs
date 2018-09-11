@@ -89,4 +89,4 @@ function loadPartial(app) {
 //   //     helpers[name] = fs.readFileSync(file).toString();
 //   // }
 //   return helpers;
-}
+// }
