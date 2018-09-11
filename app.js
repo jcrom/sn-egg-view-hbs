@@ -14,12 +14,12 @@ module.exports = app => {
     }
   }
 
-  const helpers = loadHelper(app);
-  if (helpers) {
-    for (const key of Object.keys(helpers)) {
-      handlebars.registerHelper(key, helpers[key]);
-    }
-  }
+  // const helpers = loadHelper(app);
+  // if (helpers) {
+  //   for (const key of Object.keys(helpers)) {
+  //     handlebars.registerHelper(key, helpers[key]);
+  //   }
+  // }
   class HandlebarsView {
     constructor(ctx) {
       this.app = ctx.app;
@@ -67,24 +67,26 @@ function loadPartial(app) {
   return partials;
 }
 
-function loadHelper(app) {
-  const helperPath = app.config.handlebars.helperPath;
-  // istanbul ignore next
-  if (!fs.existsSync(helperPath)) return;
 
-  const helpers = {};
-  // const files = fs.readdirSync(helperPath);
-  console.log("helperPath:", helperPath)
-  let tmp = require(helperPath);
-  // for (let name of files) {
-  //   const file = path.join(partialsPath, name);
-  //   const stat = fs.statSync(file);
-  //   if (!stat.isFile()) continue;
+// TODO: 公共Helper加载
+// function loadHelper(app) {
+//   const helperPath = app.config.handlebars.helperPath;
+//   // istanbul ignore next
+//   if (!fs.existsSync(helperPath)) return;
 
-  //   name = name
-  //     .replace(/\.\w+$/, '')
-  //     .replace(/[_-][a-z]/ig, s => s.substring(1).toUpperCase());
-  //     helpers[name] = fs.readFileSync(file).toString();
-  // }
-  return helpers;
+//   const helpers = {};
+//   // const files = fs.readdirSync(helperPath);
+//   console.log("helperPath:", helperPath)
+//   let tmp = require(helperPath);
+//   // for (let name of files) {
+//   //   const file = path.join(partialsPath, name);
+//   //   const stat = fs.statSync(file);
+//   //   if (!stat.isFile()) continue;
+
+//   //   name = name
+//   //     .replace(/\.\w+$/, '')
+//   //     .replace(/[_-][a-z]/ig, s => s.substring(1).toUpperCase());
+//   //     helpers[name] = fs.readFileSync(file).toString();
+//   // }
+//   return helpers;
 }
